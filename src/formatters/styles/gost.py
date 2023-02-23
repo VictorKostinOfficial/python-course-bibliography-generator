@@ -5,7 +5,7 @@ from string import Template
 
 from pydantic import BaseModel
 
-from formatters.models import BookModel, InternetResourceModel, ArticlesCollectionModel
+from formatters.models import BookModel, InternetResourceModel, ArticlesCollectionModel, ArticlesNewspaperModel, DissertationModel
 from formatters.styles.base import BaseCitationStyle
 from logger import get_logger
 
