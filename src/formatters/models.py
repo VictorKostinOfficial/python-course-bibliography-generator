@@ -78,3 +78,59 @@ class ArticlesCollectionModel(BaseModel):
     publishing_house: str
     year: int = Field(..., gt=0)
     pages: str
+
+
+class DissertationModel(BaseModel):
+
+    """
+    Модель диссертации:
+
+    .. code-block::
+
+        DissertationModel(
+            authors="Иванов И.М., Петров С.Н.",
+            article_title="Наука как искусство",
+            phd_or_cand="д-р. / канд."
+            branch_of_sciences="экон."
+            specialty_code="01.01.01"
+            publishing_city="СПб."
+            publishing_year=2020
+            pages="199-200"
+
+        )
+    """
+
+    authors: str
+    article_title: str
+    phd_or_cand: str
+    branch_of_sciences: str
+    specialty_code: str
+    publishing_city: str
+    publishing_year: int = Field(..., gt=0)
+    pages: str
+
+
+class ArticlesNewspaperModel(BaseModel):
+
+    """
+    Модель газетной статьи:
+
+    .. code-block::
+
+        ArticlesNewspaperModel(
+            authors="Иванов И.М., Петров С.Н.",
+            article_title="Наука как искусство",
+            newspaper_name="Южный Урал"
+            publishing_year=1980
+            newspaper_publishing_date="01.10"
+            article_number=5
+        )
+    """
+
+    authors: str
+    article_title: str
+    newspaper_name: str
+    publishing_year: int = Field(..., gt=0)
+    newspaper_publishing_date: str
+    article_number: int = Field(..., gt=0)
+
