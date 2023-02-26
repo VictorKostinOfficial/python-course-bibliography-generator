@@ -65,7 +65,8 @@ def process_input(
 
     :param str citation: Стиль цитирования
     :param str path_input: Путь к входному файлу
-    :param str path_output: Путь к выходному файлу
+    :param str path_output: Путь к выходному файлу для GHOST
+    :param str path_output_apa: Путь к выходному файлу для APA 7th
     """
 
     logger.info(

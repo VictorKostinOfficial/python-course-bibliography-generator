@@ -8,7 +8,7 @@ from formatters.models import BookModel, InternetResourceModel, ArticlesCollecti
 from formatters.styles.apa import APABook, APAInternetResource, APACollectionArticle, APANewspaperArticle,\
     APADissertation
 
-class TestGOST:
+class TestAPA:
     """
     Тестирование оформления списка источников согласно ГОСТ Р 7.0.5-2008.
     """
