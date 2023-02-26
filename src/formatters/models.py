@@ -133,4 +133,3 @@ class ArticlesNewspaperModel(BaseModel):
     publishing_year: int = Field(..., gt=0)
     newspaper_publishing_date: str
     article_number: int = Field(..., gt=0)
-

@@ -7,7 +7,13 @@ from typing import Type
 import openpyxl
 from openpyxl.workbook import Workbook
 
-from formatters.models import BookModel, InternetResourceModel, ArticlesCollectionModel, ArticlesNewspaperModel, DissertationModel
+from formatters.models import (
+    BookModel,
+    InternetResourceModel,
+    ArticlesCollectionModel,
+    ArticlesNewspaperModel,
+    DissertationModel,
+)
 from logger import get_logger
 from readers.base import BaseReader
 
@@ -89,6 +95,7 @@ class ArticlesCollectionReader(BaseReader):
             "pages": {6: str},
         }
 
+
 class ArticleMagazineReader(BaseReader):
     """
     Чтение модели статьи из газеты.
@@ -140,6 +147,7 @@ class DissertationReader(BaseReader):
             "pages": {7: int},
         }
 
+
 class SourcesReader:
     """
     Чтение из источника данных.
@@ -151,7 +159,7 @@ class SourcesReader:
         InternetResourceReader,
         ArticlesCollectionReader,
         ArticleMagazineReader,
-        DissertationReader
+        DissertationReader,
     ]
 
     def __init__(self, path: str) -> None:

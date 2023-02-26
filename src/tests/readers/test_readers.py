@@ -5,8 +5,13 @@ from typing import Any
 
 import pytest
 
-from formatters.models import BookModel, InternetResourceModel, ArticlesCollectionModel, \
-    ArticlesNewspaperModel, DissertationModel
+from formatters.models import (
+    BookModel,
+    InternetResourceModel,
+    ArticlesCollectionModel,
+    ArticlesNewspaperModel,
+    DissertationModel,
+)
 from readers.reader import (
     BookReader,
     SourcesReader,
@@ -122,5 +127,4 @@ class TestReaders:
             ArticlesCollectionModel.__name__,
             ArticlesNewspaperModel.__name__,
             DissertationModel.__name__,
-
         }

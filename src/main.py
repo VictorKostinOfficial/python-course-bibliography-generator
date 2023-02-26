@@ -5,8 +5,8 @@ from enum import Enum, unique
 
 import click
 
-from formatters.styles.gost import GOSTCitationFormatter
 from formatters.styles.apa import APACitationFormatter
+from formatters.styles.gost import GOSTCitationFormatter
 from logger import get_logger
 from readers.reader import SourcesReader
 from renderer import Renderer
@@ -58,7 +58,7 @@ def process_input(
     citation: str = CitationEnum.GOST.name,
     path_input: str = INPUT_FILE_PATH,
     path_output: str = OUTPUT_FILE_PATH,
-    path_output_apa: str = OUTPUT_FILE_PATH_APA
+    path_output_apa: str = OUTPUT_FILE_PATH_APA,
 ) -> None:
     """
     Генерация файла Word с оформленным библиографическим списком.
@@ -75,7 +75,6 @@ def process_input(
         - Путь к входному файлу: %s.
         - Путь к выходному файлу GHOST: %s.
         - Путь к выходному файлу APA: %s.""",
-
         citation,
         path_input,
         path_output,

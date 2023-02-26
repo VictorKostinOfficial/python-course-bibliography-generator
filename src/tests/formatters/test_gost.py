@@ -3,10 +3,20 @@
 """
 
 from formatters.base import BaseCitationFormatter
-from formatters.models import BookModel, InternetResourceModel, ArticlesCollectionModel, DissertationModel,\
-    ArticlesNewspaperModel
-from formatters.styles.gost import GOSTBook, GOSTInternetResource, GOSTCollectionArticle, GOSTNewspaperArticle,\
-    GOSTDissertation
+from formatters.models import (
+    BookModel,
+    InternetResourceModel,
+    ArticlesCollectionModel,
+    DissertationModel,
+    ArticlesNewspaperModel,
+)
+from formatters.styles.gost import (
+    GOSTBook,
+    GOSTInternetResource,
+    GOSTCollectionArticle,
+    GOSTNewspaperArticle,
+    GOSTDissertation,
+)
 
 
 class TestGOST:

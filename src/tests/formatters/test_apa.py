@@ -3,10 +3,21 @@
 """
 
 from formatters.base import BaseCitationFormatter
-from formatters.models import BookModel, InternetResourceModel, ArticlesCollectionModel, DissertationModel,\
-    ArticlesNewspaperModel
-from formatters.styles.apa import APABook, APAInternetResource, APACollectionArticle, APANewspaperArticle,\
-    APADissertation
+from formatters.models import (
+    BookModel,
+    InternetResourceModel,
+    ArticlesCollectionModel,
+    DissertationModel,
+    ArticlesNewspaperModel,
+)
+from formatters.styles.apa import (
+    APABook,
+    APAInternetResource,
+    APACollectionArticle,
+    APANewspaperArticle,
+    APADissertation,
+)
+
 
 class TestAPA:
     """
@@ -23,10 +34,7 @@ class TestAPA:
 
         model = APABook(book_model_fixture)
 
-        assert (
-            model.formatted
-            == "Иванов И.М. (2020). Наука как искусство."
-        )
+        assert model.formatted == "Иванов И.М. (2020). Наука как искусство."
 
     def test_internet_resource(
         self, internet_resource_model_fixture: InternetResourceModel
