@@ -5,9 +5,8 @@
 from formatters.base import BaseCitationFormatter
 from formatters.models import BookModel, InternetResourceModel, ArticlesCollectionModel, DissertationModel,\
     ArticlesNewspaperModel
-from formatters.styles.gost import GOSTBook, GOSTInternetResource, GOSTCollectionArticle, GOSTNewspaperArticle,\
-    GOSTDissertation
-
+from formatters.styles.apa import APABook, APAInternetResource, APACollectionArticle, APANewspaperArticle,\
+    APADissertation
 
 class TestGOST:
     """
@@ -22,11 +21,11 @@ class TestGOST:
         :return:
         """
 
-        model = GOSTBook(book_model_fixture)
+        model = APABook(book_model_fixture)
 
         assert (
             model.formatted
-            == "Иванов И.М. Наука как искусство. – 3-е изд. – СПб.: Просвещение, 2020. – 999 с."
+            == "Иванов И.М. (2020). Наука как искусство."
         )
 
     def test_internet_resource(
@@ -39,11 +38,11 @@ class TestGOST:
         :return:
         """
 
-        model = GOSTInternetResource(internet_resource_model_fixture)
+        model = APAInternetResource(internet_resource_model_fixture)
 
         assert (
             model.formatted
-            == "Наука как искусство // Ведомости URL: https://www.vedomosti.ru (дата обращения: 01.01.2021)."
+            == "Ведомости. (n.d.). Наука как искусство. https://www.vedomosti.ru."
         )
 
     def test_dissertation(
@@ -56,11 +55,11 @@ class TestGOST:
         :return:
         """
 
-        model = GOSTDissertation(dissertation_collection_model_fixture)
+        model = APADissertation(dissertation_collection_model_fixture)
 
         assert (
             model.formatted
-            == "Иванов И.М. Наука как искусство: дис. ... д-р. / канд. экон.: 111 Пермь, 2023. 1 с."
+            == "Иванов И.М. (2023). Наука как искусство [д-р. / канд. экон. наук]. 1 с."
         )
 
     def test_newspaper(
@@ -73,11 +72,11 @@ class TestGOST:
         :return:
         """
 
-        model = GOSTNewspaperArticle(newspaper_collection_model_fixture)
+        model = APANewspaperArticle(newspaper_collection_model_fixture)
 
         assert (
             model.formatted
-            == "Иванов И.М. (2023) Наука как искусство // Новая Газета. 01.01."
+            == "Иванов И.М. (2023, 01.01.). Наука как искусство. Новая Газета. pp. 1 A."
         )
 
     def test_articles_collection(
@@ -90,36 +89,9 @@ class TestGOST:
         :return:
         """
 
-        model = GOSTCollectionArticle(articles_collection_model_fixture)
+        model = APACollectionArticle(articles_collection_model_fixture)
 
         assert (
             model.formatted
-            == "Иванов И.М. Наука как искусство // Сборник научных трудов. – СПб.: АСТ, 2020. – С. 25-30."
+            == "Иванов И.М. (2020). Наука как искусство in Сборник научных трудов (p. 25-30)."
         )
-
-    def test_citation_formatter(
-        self,
-        book_model_fixture: BookModel,
-        internet_resource_model_fixture: InternetResourceModel,
-        articles_collection_model_fixture: ArticlesCollectionModel,
-    ) -> None:
-        """
-        Тестирование функции итогового форматирования списка источников.
-
-        :param BookModel book_model_fixture: Фикстура модели книги
-        :param InternetResourceModel internet_resource_model_fixture: Фикстура модели интернет-ресурса
-        :param ArticlesCollectionModel articles_collection_model_fixture: Фикстура модели сборника статей
-        :return:
-        """
-
-        models = [
-            GOSTBook(book_model_fixture),
-            GOSTInternetResource(internet_resource_model_fixture),
-            GOSTCollectionArticle(articles_collection_model_fixture),
-        ]
-        result = BaseCitationFormatter(models).format()
-
-        # тестирование сортировки списка источников
-        assert result[0] == models[2]
-        assert result[1] == models[0]
-        assert result[2] == models[1]

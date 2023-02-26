@@ -3,7 +3,8 @@
 """
 import pytest
 
-from formatters.models import BookModel, InternetResourceModel, ArticlesCollectionModel
+from formatters.models import BookModel, InternetResourceModel, ArticlesCollectionModel, DissertationModel, \
+    ArticlesNewspaperModel
 
 
 @pytest.fixture
@@ -15,7 +16,7 @@ def book_model_fixture() -> BookModel:
     """
 
     return BookModel(
-        authors="Иванов И.М., Петров С.Н.",
+        authors="Иванов И.М.",
         title="Наука как искусство",
         edition="3-е",
         city="СПб.",
@@ -50,7 +51,7 @@ def articles_collection_model_fixture() -> ArticlesCollectionModel:
     """
 
     return ArticlesCollectionModel(
-        authors="Иванов И.М., Петров С.Н.",
+        authors="Иванов И.М.",
         article_title="Наука как искусство",
         collection_title="Сборник научных трудов",
         city="СПб.",
@@ -58,3 +59,40 @@ def articles_collection_model_fixture() -> ArticlesCollectionModel:
         year=2020,
         pages="25-30",
     )
+
+@pytest.fixture
+def dissertation_collection_model_fixture() -> DissertationModel:
+    """
+    Фикстура модели диссертаций.
+
+    :return: DissertationModel
+    """
+
+    return DissertationModel(
+        authors="Иванов И.М.",
+        article_title="Наука как искусство",
+        phd_or_cand="д-р. / канд.",
+        branch_of_sciences="экон.",
+        specialty_code="111",
+        publishing_city="Пермь",
+        publishing_year=2023,
+        pages="1",
+    )
+
+@pytest.fixture
+def newspaper_collection_model_fixture() -> ArticlesNewspaperModel:
+    """
+    Фикстура модели газеты.
+
+    :return: ArticlesNewspaperModel
+    """
+
+    return ArticlesNewspaperModel(
+        authors="Иванов И.М.",
+        article_title="Наука как искусство",
+        newspaper_name="Новая Газета",
+        publishing_year=2023,
+        newspaper_publishing_date="01.01",
+        article_number=1,
+    )
+

@@ -7,7 +7,7 @@ from typing import Type
 import openpyxl
 from openpyxl.workbook import Workbook
 
-from formatters.models import BookModel, InternetResourceModel, ArticlesCollectionModel
+from formatters.models import BookModel, InternetResourceModel, ArticlesCollectionModel, ArticlesNewspaperModel, DissertationModel
 from logger import get_logger
 from readers.base import BaseReader
 
@@ -89,6 +89,56 @@ class ArticlesCollectionReader(BaseReader):
             "pages": {6: str},
         }
 
+class ArticleMagazineReader(BaseReader):
+    """
+    Чтение модели статьи из газеты.
+    """
+
+    @property
+    def model(self) -> Type[ArticlesNewspaperModel]:
+        return ArticlesNewspaperModel
+
+    @property
+    def sheet(self) -> str:
+        return "Статья из газеты"
+
+    @property
+    def attributes(self) -> dict:
+        return {
+            "authors": {0: str},
+            "article_title": {1: str},
+            "newspaper_name": {2: str},
+            "publishing_year": {3: int},
+            "newspaper_publishing_date": {4: str},
+            "article_number": {5: int},
+        }
+
+
+class DissertationReader(BaseReader):
+    """
+    Чтение модели диссертации.
+    """
+
+    @property
+    def model(self) -> Type[DissertationModel]:
+        return DissertationModel
+
+    @property
+    def sheet(self) -> str:
+        return "Диссертация"
+
+    @property
+    def attributes(self) -> dict:
+        return {
+            "authors": {0: str},
+            "article_title": {1: str},
+            "phd_or_cand": {2: str},
+            "branch_of_sciences": {3: str},
+            "specialty_code": {4: str},
+            "publishing_city": {5: str},
+            "publishing_year": {6: int},
+            "pages": {7: int},
+        }
 
 class SourcesReader:
     """
@@ -100,6 +150,8 @@ class SourcesReader:
         BookReader,
         InternetResourceReader,
         ArticlesCollectionReader,
+        ArticleMagazineReader,
+        DissertationReader
     ]
 
     def __init__(self, path: str) -> None:
